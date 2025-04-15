@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBI Credit Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFFFFF;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            background-color: #0871B2;
+            padding: 15px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+        .logo-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .logo-container img {
+            width: 100%;
+            height: 100px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            margin: 15px;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #004aad;
+        }
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 60px;
+        }
+        .loading-circle {
+            width: 80px;
+            height: 80px;
+            border: 7px solid #029AE5;
+            border-top: 7px solid transparent;
+            border-radius: 100%;
+            animation: spin 1s linear infinite;
+        }
+        .text-container {
+            margin-top: 50px; /* Increased spacing to separate from animation */
+            text-align: center;
+        }
+        .loading-text {
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .footer-image {
+            text-align: center;
+            margin-top: 60px;
+        }
+        .footer-image img {
+            width: 100%;
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">SBI Credit Card</div>
+
+    <div class="logo-container">
+        <img src="assets/img/logo.png" alt="SBI Logo">
+    </div>
+
+    <div class="card">
+        Your Documents Under Review <br> Please Wait...
+    </div>
+
+    <div class="loading-container">
+        <div class="loading-circle"></div>
+    </div>
+
+    <div class="text-container">
+        <div class="loading-text">DO NOT PRESS BACK / CANCEL BUTTON</div>
+    </div>
+
+    <div class="footer-image">
+        <img src="assets/img/footer_image.png" alt="Footer Image">
+    </div>
+</div>
+
+</body>
+</html>
